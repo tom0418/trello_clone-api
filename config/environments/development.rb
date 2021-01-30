@@ -51,6 +51,9 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
+  # For docker container
+  config.web_console.whitelisted_ips = '172.23.0.1'
+
   # Bullet
   config.after_initialize do
     Bullet.enable = true
@@ -60,6 +63,9 @@ Rails.application.configure do
     Bullet.rails_logger = true
     Bullet.add_footer = true
   end
+
+  # devise
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   # Better Errors for docker container
   BetterErrors::Middleware.allow_ip! '0.0.0.0/0'
