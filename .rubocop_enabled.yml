@@ -1,0 +1,174 @@
+AllCops:
+  DisplayCopNames: true
+  NewCops: enable
+
+Rails:
+  Enabled: true
+Rails/WhereNot: # (new in 2.8)
+  Enabled: true
+
+Metrics/AbcSize:
+  Max: 20
+
+Layout/EmptyLineAfterGuardClause:
+  Enabled: true
+Layout/EmptyLinesAroundClassBody:
+  Enabled: true
+Layout/EndOfLine:
+  EnforcedStyle: lf
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+
+Lint/AmbiguousOperator:
+  Enabled: true
+# For rubocop < 1.0.0
+Lint/RaiseException:
+  Enabled: true
+# For rubocop < 1.0.0
+Lint/StructNewOverride:
+  Enabled: true
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: true
+Lint/MixedRegexpCaptureTypes:
+  Enabled: true
+Lint/DuplicateBranch: # (new in 1.3)
+  Enabled: true
+Lint/DuplicateRegexpCharacterClassElement: # (new in 1.1)
+  Enabled: true
+Lint/EmptyBlock: # (new in 1.1)
+  Enabled: true
+Lint/EmptyClass: # (new in 1.3)
+  Enabled: true
+Lint/NoReturnInBeginEndBlocks: # (new in 1.2)
+  Enabled: true
+Lint/ToEnumArguments: # (new in 1.1)
+  Enabled: true
+Lint/UnmodifiedReduceAccumulator: # (new in 1.1)
+  Enabled: true
+
+Style/ExponentialNotation:
+  Enabled: true
+# For rubocop < 1.0.0
+Style/HashEachMethods:
+  Enabled: true
+# For rubocop < 1.0.0
+Style/HashTransformValues:
+  Enabled: true
+Style/AndOr:
+  EnforcedStyle: conditionals
+Style/RedundantRegexpCharacterClass:
+  Enabled: true
+Style/ArgumentsForwarding: # (new in 1.1)
+  Enabled: true
+Style/CollectionCompact: # (new in 1.2)
+  Enabled: true
+Style/DocumentDynamicEvalDefinition: # (new in 1.1)
+  Enabled: true
+Style/NegatedIfElseCondition: # (new in 1.2)
+  Enabled: true
+Style/NilLambda: # (new in 1.3)
+  Enabled: true
+Style/SwapValues: # (new in 1.1)
+  Enabled: true
+Style/MethodCallWithArgsParentheses:
+  Enabled: true
+  IgnoreMacros: true
+  IgnoredMethods:
+    - require
+    - require_relative
+    - include
+    - redirect_to
+    - render
+    - describe
+    - gem
+    - source
+    - load_defaults
+    - allow_ip!
+    - template_engine
+    - threads
+    - port
+    - environment
+    - plugin
+    - label
+    - text_field
+    - hidden_field
+    - password_field
+    - number_field
+    - email_field
+    - text_area
+    - select
+    - check_box
+    - submit
+    - fields_for
+    - j
+    - javascript_include_tag
+    - stylesheet_link_tag
+    - yield
+
+Style/RedundantRegexpEscape:
+  Enabled: true
+
+RSpec/MultipleExpectations:
+  Max: 7
+RSpec/ExampleLength:
+  Max: 10
+
+Performance/AncestorsInclude: # (new in 1.7)
+  Enabled: true
+Performance/ArraySemiInfiniteRangeSlice: # (new in 1.9)
+  Enabled: true
+Performance/BigDecimalWithNumericArgument: # (new in 1.7)
+  Enabled: true
+Performance/BlockGivenWithExplicitBlock: # (new in 1.9)
+  Enabled: true
+Performance/CollectionLiteralInLoop: # (new in 1.8)
+  Enabled: true
+Performance/ConstantRegexp: # (new in 1.9)
+  Enabled: true
+Performance/MethodObjectAsBlock: # (new in 1.9)
+  Enabled: true
+Performance/RedundantSortBlock: # (new in 1.7)
+  Enabled: true
+Performance/RedundantStringChars: # (new in 1.7)
+  Enabled: true
+Performance/ReverseFirst: # (new in 1.7)
+  Enabled: true
+Performance/SortReverse: # (new in 1.7)
+  Enabled: true
+Performance/Squeeze: # (new in 1.7)
+  Enabled: true
+Performance/StringInclude: # (new in 1.7)
+  Enabled: true
+Performance/Sum: # (new in 1.8)
+  Enabled: true
+
+Rails/ActiveRecordCallbacksOrder: # (new in 2.7)
+  Enabled: true
+Rails/AfterCommitOverride: # (new in 2.8)
+  Enabled: true
+Rails/FindById: # (new in 2.7)
+  Enabled: true
+Rails/Inquiry: # (new in 2.7)
+  Enabled: true
+Rails/MailerName: # (new in 2.7)
+  Enabled: true
+Rails/MatchRoute: # (new in 2.7)
+  Enabled: true
+Rails/NegateInclude: # (new in 2.7)
+  Enabled: true
+Rails/Pluck: # (new in 2.7)
+  Enabled: true
+Rails/PluckInWhere: # (new in 2.7)
+  Enabled: true
+Rails/RenderInline: # (new in 2.7)
+  Enabled: true
+Rails/RenderPlainText: # (new in 2.7)
+  Enabled: true
+Rails/ShortI18n: # (new in 2.7)
+  Enabled: true
+Rails/SquishedSQLHeredocs: # (new in 2.8)
+  Enabled: true
+Rails/WhereExists: # (new in 2.7)
+  Enabled: true

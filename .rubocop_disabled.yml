@@ -1,0 +1,47 @@
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: false
+Layout/LineLength:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+Metrics/ClassLength:
+  Enabled: false
+Metrics/ModuleLength:
+  Enabled: false
+Metrics/MethodLength:
+  Enabled: false
+
+Naming/FileName:
+  Enabled: false
+Naming/VariableNumber:
+  Enabled: false
+
+Style/AsciiComments:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Style/Lambda:
+  Enabled: false
+Style/GlobalStdStream:
+  Enabled: false
+
+# GAE ruby version is 2.5, Style/SlicingWithRange is not available
+Style/SlicingWithRange:
+  Enabled: false
+Style/RedundantRegexpCharacterClass:
+  Enabled: false
+Style/RedundantRegexpEscape:
+  Enabled: false
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: false
+Lint/MixedRegexpCaptureTypes:
+  Enabled: false
+Lint/UselessMethodDefinition:
+  Enabled: false
+
+Performance/StringInclude:
+  Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false

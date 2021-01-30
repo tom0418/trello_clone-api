@@ -1,0 +1,21 @@
+AllCops:
+  DisplayCopNames: true
+  Exclude:
+    - db/**/*
+    - bin/*
+    - vendor/**/*
+    - test/*
+    - spec/*
+Bundler/OrderedGems:
+  Exclude:
+    - Gemfile
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*_spec.rb
+    - spec/factories/*
+    - spec/support/*
+    - Guardfile
+Naming/FileName:
+  Exclude:
+    - Gemfile
+    - Guardfile
