@@ -10,6 +10,7 @@ gem 'rails', '~> 6.0.3'
 
 # DB
 gem 'mysql2'
+gem 'ridgepole'
 
 # HTML/CSS/JS
 gem 'bootsnap', require: false
@@ -29,7 +30,9 @@ group :development, :test do
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
 end
+
 group :development do
+  gem 'annotate'
   gem 'better_errors'
   gem 'bullet'
   gem 'web-console'
@@ -37,6 +40,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen'
 end
+
 group :test do
   gem 'factory_bot_rails'
   gem 'faker'

@@ -56,6 +56,9 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2, >= 2.2.2)
+    annotate (3.1.1)
+      activerecord (>= 3.2, < 7.0)
+      rake (>= 10.4, < 14.0)
     ast (2.4.2)
     better_errors (2.9.1)
       coderay (>= 1.0.0)
@@ -77,6 +80,7 @@ GEM
     crass (1.0.6)
     debug_inspector (1.0.0)
     diff-lcs (1.4.4)
+    diffy (3.4.0)
     erubi (1.10.0)
     factory_bot (6.1.0)
       activesupport (>= 5.0.0)
@@ -164,6 +168,9 @@ GEM
       ffi (~> 1.0)
     regexp_parser (2.0.3)
     rexml (3.2.4)
+    ridgepole (0.8.13)
+      activerecord (>= 5.0.1, < 6.1)
+      diffy
     rspec (3.10.0)
       rspec-core (~> 3.10.0)
       rspec-expectations (~> 3.10.0)
@@ -252,6 +259,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  annotate
   better_errors
   binding_of_caller
   bootsnap
@@ -266,6 +274,7 @@ DEPENDENCIES
   pry-rails
   puma
   rails (~> 6.0.3)
+  ridgepole
   rspec
   rspec-rails
   rubocop
