@@ -50,5 +50,8 @@ group :test do
   gem 'faker'
   gem 'rspec'
   gem 'rspec-rails'
+  gem 'rspec_junit_formatter'
   gem 'selenium-webdriver'
+  gem 'shoulda-matchers'
+  gem 'simplecov', '~> 0.17.0', require: false # TODO: https://github.com/codeclimate/test-reporter/issues/418
 end
