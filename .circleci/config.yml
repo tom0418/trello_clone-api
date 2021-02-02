@@ -1,0 +1,91 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.7.2-node-browsers
+        environment:
+          - BUNDLER_VERSION: 2.2.6
+          - RAILS_ENV: test
+          - MYSQL_HOST: 127.0.0.1
+          - MYSQL_PORT: 3306
+          - MYSQL_USERNAME: root
+          - MYSQL_PASSWORD: ''
+      - image: circleci/mysql:5.7
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      # Download and cache gem dependencies
+      - restore_cache:
+          keys:
+            - gem-dependencies-{{ checksum "Gemfile.lock" }}
+            - gem-dependencies
+
+      - run:
+          name: Install bundler
+          command: |
+            gem install -N bundler -v 2.2.6
+
+      - run:
+          name: Install gems
+          command: |
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
+
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: gem-dependencies-{{ checksum "Gemfile.lock" }}
+
+      # Download and cache node_modules dependencies
+      - restore_cache:
+          keys:
+            - node-modules-dependencies-{{ checksum "yarn.lock" }}
+            - node-modules-dependencies
+
+      - run:
+          name: Install node_modules
+          command: |
+            yarn install && yarn bin
+
+      - save_cache:
+          paths:
+            - ./node_modules
+          key: node-modules-dependencies-{{ checksum "yarn.lock" }}
+
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://127.0.0.1:3306 -timeout 120s
+
+      # Database config setup
+      - run: mv config/database.yml.ci config/database.yml
+
+      # Database setup
+      - run:
+          name: DB setup
+          command: |
+            bundle exec rails db:create
+            bundle exec ridgepole -c config/database.yml -f db/Schemafile -E test -a
+
+      # run tests!
+      - run:
+          name: Run tests
+          command: |
+            bundle exec rubocop -c .rubocop.yml --except Metrics app config db lib spec
+            mkdir /tmp/test-results
+            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb")"
+
+            bundle exec rspec --profile 10 \
+                              --format RspecJunitFormatter \
+                              --out /tmp/test-results/rspec.xml \
+                              --format progress \
+                              -- $(echo "${TEST_FILES}" | sed -e 's/\n/\\n/' -e 's/ /\ /')
+
+      # collect reports
+      - store_test_results:
+          path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
+      - store_artifacts:
+          path: coverage
