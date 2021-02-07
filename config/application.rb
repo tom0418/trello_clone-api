@@ -45,4 +45,7 @@ module Api
                        routing_specs: false)
     end
   end
+
+  # DEPRECATION WARNING（非推奨警告メッセージ）を表示しない
+  ActiveSupport::Deprecation.silenced = true
 end

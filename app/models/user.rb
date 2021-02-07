@@ -31,12 +31,19 @@
 #  index_users_on_uid_and_provider      (uid,provider) UNIQUE
 #
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
   include DeviseTokenAuth::Concerns::User
+  include EmailUtils
+  PASSWORD_LENGTH = (8..128).freeze
 
   has_many :users_roles, dependent: :delete_all
   has_many :roles, through: :users_roles
+
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable
+
+  validates :email, presence: true, format: { with: EmailUtils::EMAIL_REGEX }, uniqueness: { case_sensitive: false }, if: :email_required?
+  validates :password, presence: true, length: { in: PASSWORD_LENGTH }, if: :password_required?
+  validates :name, presence: true
+  validates :nickname, presence: true
+  validates :provider, presence: true
+  validates :uid, presence: true
 end
