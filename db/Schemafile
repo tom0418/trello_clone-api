@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
-create_table 'users', options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+create_table 'roles', force: :cascade, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4' do |t|
+  t.bigint     'role_type_id',            null: false
+  t.timestamps
+end
+
+create_table 'users', force: :cascade, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4' do |t|
   t.string     'provider',                null: false, default: 'email'
   t.string     'uid',                     null: false, default: ''
   t.string     'name',                    null: false, default: ''
@@ -23,7 +28,7 @@ add_index 'users', %w[uid provider],          unique: true, name: 'index_users_o
 add_index 'users', %w[reset_password_token],  unique: true, name: 'index_users_on_reset_password_token'
 add_index 'users', %w[confirmation_token],    unique: true, name: 'index_users_on_confirmation_token'
 
-create_table 'todos', options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+create_table 'todos', force: :cascade, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4' do |t|
   t.string     'title', null: false, default: ''
   t.text       'memo'
   t.timestamps
