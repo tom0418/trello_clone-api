@@ -16,5 +16,7 @@ class Role < ApplicationRecord
     member: 2
   }
 
+  has_many :users_roles, dependent: :delete_all
+  has_many :users, through: :users_roles
   validates :role_type_id, presence: true
 end
