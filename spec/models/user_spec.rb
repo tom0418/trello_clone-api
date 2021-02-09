@@ -6,10 +6,9 @@ RSpec.describe User, type: :model do
   describe 'User Validations' do
     it { is_expected.to(validate_presence_of(:email)) }
     it { is_expected.to(validate_presence_of(:password)) }
-    it { is_expected.to(validate_presence_of(:name)) }
+    it { is_expected.to(validate_presence_of(:first_name)) }
+    it { is_expected.to(validate_presence_of(:last_name)) }
     it { is_expected.to(validate_presence_of(:nickname)) }
-    it { is_expected.to(validate_presence_of(:provider)) }
-    it { is_expected.to(validate_presence_of(:uid)) }
     it { is_expected.to(allow_value('example@example.com').for(:email)) }
     it { is_expected.to(allow_value('example@example.co.jp').for(:email)) }
     it { is_expected.not_to(allow_value('example').for(:email)) }

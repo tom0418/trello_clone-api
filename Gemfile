@@ -18,7 +18,6 @@ gem 'turbolinks'
 
 # Authentication
 gem 'devise'
-gem 'devise_token_auth'
 
 # Webpack for rails
 gem 'webpacker', '~> 5.2', '>= 5.2.1'
