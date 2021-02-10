@@ -11,8 +11,8 @@ RUN echo '#deb-src http://ftp.jp.debian.org/debian/ buster-backports main contri
 
 RUN apt-get update -qq && apt-get install -y build-essential default-mysql-client imagemagick apt-transport-https
 
-RUN mkdir /api
-ENV APP_ROOT /api
+RUN mkdir /tasks_manager
+ENV APP_ROOT /tasks_manager
 WORKDIR $APP_ROOT
 COPY ./Gemfile* $APP_ROOT/
 

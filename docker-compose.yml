@@ -7,7 +7,6 @@ services:
       - '3306:3306'
     environment:
       - MYSQL_ROOT_PASSWORD=password
-      - MYSQL_DATABASE=sample_app_development
       - MYSQL_USER=root
       - MYSQL_PASSWORD=password
     volumes:
@@ -26,7 +25,7 @@ services:
       - MYSQL_PASSWORD=password
       - WEBPACKER_DEV_SERVER_HOST=webpacker
     volumes:
-      - .:/api:cached
+      - .:/tasks_manager:cached
       - bundle:/usr/local/bundle
       - node_modules:/app/node_modules
       - packs:/app/public/packs

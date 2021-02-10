@@ -21,7 +21,7 @@ require 'action_cable/engine'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module Api
+module TasksManager
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
@@ -45,4 +45,7 @@ module Api
                        routing_specs: false)
     end
   end
+
+  # DEPRECATION WARNING（非推奨警告メッセージ）を表示しない
+  ActiveSupport::Deprecation.silenced = true
 end
