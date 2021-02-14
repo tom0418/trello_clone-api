@@ -31,6 +31,7 @@
 #  fk_accounts_users1  (user_id => users.id)
 #
 class Account < ApplicationRecord
+  include AuthToken
   include EmailUtils
 
   PASSWORD_LENGTH = (8..128).freeze

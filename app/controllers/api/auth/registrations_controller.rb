@@ -8,8 +8,8 @@ module Api
         account.build_user
 
         if account.save
-          # TODO: トークン作成の実装、アカウント登録後に access_token を返す
-          render json: account
+          access_token = account.generate_jwt
+          render json: access_token
         else
           render json: { errors: { 'error' => ['is invalid'] } }, status: :unprocessable_entity
         end
