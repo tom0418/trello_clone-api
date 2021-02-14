@@ -42,6 +42,8 @@ group :development do
   gem 'listen'
   gem 'spring'
   gem 'spring-watcher-listen'
+  gem 'letter_opener'
+  gem 'letter_opener_web'
 end
 
 group :test do
