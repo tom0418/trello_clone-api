@@ -7,12 +7,9 @@ module Api
         account = Account.new(sign_up_params)
         account.build_user
 
-        if account.save
-          access_token = account.generate_jwt
-          render json: access_token
-        else
-          render json: { errors: { 'error' => ['is invalid'] } }, status: :unprocessable_entity
-        end
+        account.save!
+        access_token = account.generate_jwt
+        render json: access_token
       end
 
       private
