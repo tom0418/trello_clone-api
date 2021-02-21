@@ -13,7 +13,6 @@ RSpec.describe Account, type: :model do
     it { is_expected.not_to(allow_value('example').for(:email)) }
     it { is_expected.not_to(allow_value('example@example').for(:email)) }
     it { is_expected.to(validate_length_of(:password).is_at_least(8).is_at_most(128)) }
-    it { is_expected.to(validate_confirmation_of(:password)) }
   end
 
   describe 'Account Associations' do

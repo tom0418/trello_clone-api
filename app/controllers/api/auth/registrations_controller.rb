@@ -3,12 +3,14 @@
 module Api
   module Auth
     class RegistrationsController < Devise::RegistrationsController
+      skip_before_action :process_token
+
       def create
         form = AccountForm.new(sign_up_params)
         account = form.build
         account.save!
         access_token = account.generate_jwt
-        render json: access_token
+        render json: access_token, status: :created
       end
 
       private

@@ -3,29 +3,21 @@
 module Api
   module Auth
     class SessionsController < Devise::SessionsController
-      # before_action :configure_sign_in_params, only: [:create]
+      skip_before_action :process_token
 
-      # GET /resource/sign_in
-      # def new
-      #   super
-      # end
+      def create
+        @account = Account.find_for_database_authentication(login: sign_in_params[:login])
+        raise(ActionController::BadRequest) unless allow_login?
 
-      # POST /resource/sign_in
-      # def create
-      #   super
-      # end
+        access_token = current_account.generate_jwt
+        render json: access_token.to_json, status: :created
+      end
 
-      # DELETE /resource/sign_out
-      # def destroy
-      #   super
-      # end
+      private
 
-      # protected
-
-      # If you have extra params to permit, append them to the sanitizer.
-      # def configure_sign_in_params
-      #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
-      # end
+      def allow_login?
+        @account.present? && @account.valid_password?(sign_in_params[:password])
+      end
     end
   end
 end
