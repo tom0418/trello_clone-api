@@ -63,6 +63,10 @@ module ErrorHandler
       [ActionController::BadRequest, ActionController::ParameterMissing]
     end
 
+    def unauthorized
+      [JWT::ExpiredSignature, JWT::VerificationError, JWT::DecodeError]
+    end
+
     def not_found
       [ActionController::RoutingError, ActiveRecord::RecordNotFound]
     end
@@ -74,6 +78,7 @@ module ErrorHandler
     def status
       case exception
       when *bad_request then 400
+      when *unauthorized then 401
       when *not_found then 404
       when *unprocessable_entity then 422
       else 500

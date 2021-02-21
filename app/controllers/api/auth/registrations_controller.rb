@@ -4,9 +4,8 @@ module Api
   module Auth
     class RegistrationsController < Devise::RegistrationsController
       def create
-        account = Account.new(sign_up_params)
-        account.build_user
-
+        form = AccountForm.new(sign_up_params)
+        account = form.build
         account.save!
         access_token = account.generate_jwt
         render json: access_token

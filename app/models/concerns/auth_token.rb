@@ -10,15 +10,17 @@ module AuthToken
   private
 
   def payload
+    authenticate_at = Time.now.to_i
+
     {
-      exp: exp_payload,
-      iat: iat_payload,
-      sub: sub_payload
+      exp: authenticate_at + 3600,
+      iat: authenticate_at,
+      sub: uuid
     }
   end
 
   def secret_key
-    Rails.application.credentials.secret_key_base
+    Rails.application.secrets.secret_key_base
   end
 
   def header_fields
@@ -26,17 +28,5 @@ module AuthToken
       alg: 'HS256',
       typ: 'JWT'
     }
-  end
-
-  def exp_payload
-    Time.now.to_i + 3600
-  end
-
-  def iat_payload
-    Time.now.to_i
-  end
-
-  def sub_payload
-    'account'
   end
 end
