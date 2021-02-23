@@ -9,14 +9,13 @@ module Api
         form = AccountForm.new(sign_up_params)
         account = form.build
         account.save!
-        access_token = account.generate_jwt
-        render json: access_token, status: :created
+        render json: account, status: :created
       end
 
       private
 
       def sign_up_params
-        params.require(:account).permit(:email, :password, :password_confirmation, :nickname, :uuid)
+        params.require(:account).permit(:email, :password, :password_confirmation, :nickname)
       end
     end
   end

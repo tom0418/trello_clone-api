@@ -11,8 +11,8 @@ class ApplicationController < ActionController::API
   private
 
   def process_token
-    jwt_payload! if access_token.present?
-    @current_account_id = jwt_payload['sub']
+    payload = jwt_payload! if access_token.present?
+    @current_account_id = payload['sub']
   end
 
   def authenticate_account!

@@ -10,7 +10,7 @@ module AuthToken
   private
 
   def payload
-    authenticate_at = Time.now.to_i
+    authenticate_at = Time.zone.now.to_i
 
     {
       exp: authenticate_at + 3600,

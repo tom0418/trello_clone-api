@@ -36,6 +36,10 @@ module TasksManager
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
 
+    # Set Timezone
+    config.time_zone = 'Asia/Tokyo'
+    config.active_record.default_timezone = :local
+
     # Generate test framework
     config.generators do |g|
       g.test_framework(:rspec,

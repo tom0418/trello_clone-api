@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class AccountForm < BaseForm
-  attr_accessor :email, :password, :password_confirmation, :nickname, :uuid
+  attr_accessor :email, :password, :password_confirmation, :nickname, :uuid, :access_token
 
   def initialize(params)
     super()
@@ -11,16 +11,13 @@ class AccountForm < BaseForm
   def build
     account = Account.new(@params)
     account.uuid = SecureRandom.uuid
+    account.access_token = account.generate_jwt
     account.build_user
 
     account
   end
 
   private
-
-  def account_uuid
-    params[:uuid] ||= SecureRandom.uuid
-  end
 
   attr_accessor :account
 end

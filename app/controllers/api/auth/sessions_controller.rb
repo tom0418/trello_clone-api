@@ -9,8 +9,10 @@ module Api
         @account = Account.find_for_database_authentication(login: sign_in_params[:login])
         raise(ActionController::BadRequest) unless allow_login?
 
-        access_token = current_account.generate_jwt
-        render json: access_token.to_json, status: :created
+        access_token = @account.generate_jwt
+        @account.update_attribute(:access_token, access_token) # rubocop:disable Rails/SkipsModelValidations
+
+        render json: @account, status: :created
       end
 
       private
