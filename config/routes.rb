@@ -9,8 +9,4 @@ Rails.application.routes.draw do
     registrations: 'api/auth/registrations',
     sessions: 'api/auth/sessions'
   }
-
-  namespace :api do
-    resources :todos
-  end
 end

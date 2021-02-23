@@ -3,9 +3,11 @@
 module Api
   module Auth
     class SessionsController < Devise::SessionsController
-      skip_before_action :process_token
+      skip_before_action :authenticate_account!, only: %i[create]
 
       def create
+        return if signed_in?
+
         @account = Account.find_for_database_authentication(login: sign_in_params[:login])
         raise(ActionController::BadRequest) unless allow_login?
 

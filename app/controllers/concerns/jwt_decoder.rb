@@ -5,20 +5,11 @@ module JwtDecoder
 
   ALGORITHM = { algorithm: 'HS256' }.freeze
 
-  def jwt_payload!
-    decode.first
-    raise(JWT::ExpiredSignature, JWT::VerificationError, JWT::DecodeError)
-  end
-
-  private
-
-  def decode
+  def decode(access_token)
     JWT.decode(access_token, secret_key, true, ALGORITHM)
   end
 
-  def access_token
-    request.headers['Authorization'].split[1]
-  end
+  private
 
   def secret_key
     Rails.application.secrets.secret_key_base
