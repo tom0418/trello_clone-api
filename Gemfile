@@ -18,6 +18,7 @@ gem 'turbolinks'
 
 # Authentication
 gem 'devise'
+gem 'jwt'
 
 # Webpack for rails
 gem 'webpacker', '~> 5.2', '>= 5.2.1'
@@ -42,6 +43,8 @@ group :development do
   gem 'listen'
   gem 'spring'
   gem 'spring-watcher-listen'
+  gem 'letter_opener'
+  gem 'letter_opener_web'
 end
 
 group :test do

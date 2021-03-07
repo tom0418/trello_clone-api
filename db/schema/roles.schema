@@ -1,0 +1,6 @@
+# frozen_string_literal: true
+
+create_table 'roles', force: :cascade, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4' do |t|
+  t.bigint     'role_type_id', null: false
+  t.timestamps
+end
